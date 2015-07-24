@@ -1,0 +1,3 @@
+Flask>=0.10
+chartkick>=0.4.2
+blueprint>=0.6.1

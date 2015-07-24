@@ -1,0 +1,81 @@
+<!DOCTYPE_HTML>
+<html>
+	<head>
+		<style type="text/css">
+		    .test_box {
+			    width: 100%;
+			    min-height: 250px;
+			    margin: 1em auto;
+			    position: relative;
+			}
+			.test_tab {
+			    width: 25%;
+			    margin-right: -1px;
+			    border: 1px solid #ccc;
+			    border-bottom: 0;
+			    float: left;
+			}
+			.test_label {
+			    display: block;
+			    padding-top: 5px;
+			    padding-bottom: 5px;
+			    background-color: #eee;
+			    text-align: center;
+			}
+			.test_radio,
+			.test_tab_content {
+				width:96%;
+			    position: absolute;
+			    left: -999em;
+			}
+			.test_radio:checked ~ .test_tab_content {
+			    margin-top: -1px;
+			    padding: 1em 2em;
+			    border: 1px solid #ccc;
+			    left: 0;
+			    right: 0;
+			}
+			.test_radio:checked ~ .test_label {
+			    background-color: #fff;
+			    border-bottom: 1px solid #fff;
+			    position: relative;
+			    z-index: 1;
+			}
+		</style>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="http://code.highcharts.com/highcharts.js"></script>
+		<script src="{{ url_for('static', filename='chartkick.js') }}"></script>	
+	</head>
+	<body>
+		<div class="test_box">
+			<div class="test_tab">
+				<input type="radio" id="testTabRadio1" class="test_radio" name="tab" checked="checked" />
+				<label class="test_label" for="testTabRadio1">line</label>
+				<div class="test_tab_content">
+            		{% line_chart exchange with min=0.4 id='rates' 
+            		    library={"title":{"text":"USD to EUR exchange rates"}, "colors":['#00CACA']} %}
+        		    {% line_chart temperature with id='temperature' %}
+        		</div>
+    		</div>
+			<div class="test_tab"> 
+				<input type="radio" id="testTabRadio2" class="test_radio" name="tab" />
+				<label class="test_label" for="testTabRadio2">pie</label>
+				<div class="test_tab_content">
+					{% pie_chart browser_stats with library={"title":{"text":"Browser Statistics, May 2013"}} %}
+				</div>
+			</div>
+			<div class="test_tab">
+				<input type="radio" id="testTabRadio3" class="test_radio" name="tab" />
+				<label class="test_label" for="testTabRadio3">the other</label>
+				<div class="test_tab_content">
+					{% column_chart browser_stats with 
+					    library={"title":{"text":"browser status"}, "colors":['#00CACA']} %}
+					{% bar_chart sizes with id='sizes' 
+					    library={"title":{"text":"size"}} %}
+					{% area_chart areas with id='areas' 
+					    library={"title":{"text":"areas"}, "colors":['#C2FF68']} %}		
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

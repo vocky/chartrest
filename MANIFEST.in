@@ -1,0 +1,14 @@
+include README.md
+include requirements.txt
+include requirements-dev.txt
+include application.py
+graft docs
+graft tests
+recursive-include tests *
+recursive-include docs *
+recursive-include tests *.pyc
+recursive-include tests *.pyo
+recursive-include docs *pyc
+recursive-include docs *pyo
+recursive-include * __pycache__
+prune docs/_build
