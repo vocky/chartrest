@@ -50,30 +50,35 @@
 		<div class="test_box">
 			<div class="test_tab">
 				<input type="radio" id="testTabRadio1" class="test_radio" name="tab" checked="checked" />
-				<label class="test_label" for="testTabRadio1">line</label>
+				<label class="test_label" for="testTabRadio1">Data Quality</label>
 				<div class="test_tab_content">
-            		{% line_chart exchange with min=0.4 id='rates' 
-            		    library={"title":{"text":"USD to EUR exchange rates"}, "colors":['#00CACA']} %}
-        		    {% line_chart temperature with id='temperature' %}
+					{% line_chart dq_Average with id='dq_Average' 
+        		       library={"title":{"text":"Average"}, "colors":['#8CEA00']}%}
+        		    {% line_chart dq_Tokyo with id='dq_Tokyo' 
+        		       library={"title":{"text":"Tokyo"}, "colors":['#00CACA']}%}
+        		    {% line_chart dq_Fukuoka with id='dq_Fukuoka' 
+        		       library={"title":{"text":"Fukuoka"}, "colors":['#FF8F59']}%}
         		</div>
     		</div>
 			<div class="test_tab"> 
 				<input type="radio" id="testTabRadio2" class="test_radio" name="tab" />
-				<label class="test_label" for="testTabRadio2">pie</label>
+				<label class="test_label" for="testTabRadio2">Data Monitoring</label>
 				<div class="test_tab_content">
-					{% pie_chart browser_stats with library={"title":{"text":"Browser Statistics, May 2013"}} %}
+				    {% area_chart areas with id='areas' 
+					    library={"title":{"text":"Data Volume"}, "colors":['#ACD6FF']} %}	
+					{% column_chart dm_users with id='dm_users' 
+        		       library={"title":{"text":"Users Count"}, "colors":['#FF8F59']}%}
 				</div>
 			</div>
 			<div class="test_tab">
 				<input type="radio" id="testTabRadio3" class="test_radio" name="tab" />
-				<label class="test_label" for="testTabRadio3">the other</label>
+				<label class="test_label" for="testTabRadio3">Traffic Index</label>
 				<div class="test_tab_content">
+				    {% pie_chart browser_stats with library={"title":{"text":"Browser Statistics, May 2013"}} %}
 					{% column_chart browser_stats with 
 					    library={"title":{"text":"browser status"}, "colors":['#00CACA']} %}
 					{% bar_chart sizes with id='sizes' 
 					    library={"title":{"text":"size"}} %}
-					{% area_chart areas with id='areas' 
-					    library={"title":{"text":"areas"}, "colors":['#C2FF68']} %}		
 				</div>
 			</div>
 		</div>
