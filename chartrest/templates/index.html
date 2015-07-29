@@ -52,6 +52,7 @@
 				<input type="radio" id="testTabRadio1" class="test_radio" name="tab" checked="checked" />
 				<label class="test_label" for="testTabRadio1">Data Quality</label>
 				<div class="test_tab_content">
+				    <textarea cols="100">数据质量评测。使用宝马的评测标准，最大值为1，值越大，表明数据的质量越高。每天更新。此页显示了平均值、东京的值、福冈的值。</textarea>
 					{% line_chart dq_Average with id='dq_Average' 
         		       library={"title":{"text":"Average"}, "colors":['#8CEA00']}%}
         		    {% line_chart dq_Tokyo with id='dq_Tokyo' 
@@ -64,7 +65,8 @@
 				<input type="radio" id="testTabRadio2" class="test_radio" name="tab" />
 				<label class="test_label" for="testTabRadio2">Data Monitoring</label>
 				<div class="test_tab_content">
-				    {% area_chart areas with id='areas' 
+				    <textarea cols="100">数据监控页面。暂时只显示了每5分钟的数据量、上传用户数。</textarea>
+				    {% area_chart dm_volume with id='dm_volume' 
 					    library={"title":{"text":"Data Volume"}, "colors":['#ACD6FF']} %}	
 					{% column_chart dm_users with id='dm_users' 
         		       library={"title":{"text":"Users Count"}, "colors":['#FF8F59']}%}
@@ -74,11 +76,12 @@
 				<input type="radio" id="testTabRadio3" class="test_radio" name="tab" />
 				<label class="test_label" for="testTabRadio3">Traffic Index</label>
 				<div class="test_tab_content">
-				    {% pie_chart browser_stats with library={"title":{"text":"Browser Statistics, May 2013"}} %}
-					{% column_chart browser_stats with 
-					    library={"title":{"text":"browser status"}, "colors":['#00CACA']} %}
-					{% bar_chart sizes with id='sizes' 
-					    library={"title":{"text":"size"}} %}
+				    <textarea cols="100">交通指数界面。显示这个城市一天交通指数平均值的排名。当大于7时，表示路网已经开始拥堵。当小于4时，表明路网比较畅通。值越小，路网越畅通。</textarea>
+					{% bar_chart ti_city with id='ti_city' 
+					    library={"title":{"text":"Traffic Index"}, "colors":['#FF8F59']} %}
+					<textarea cols="100">指数模式界面。显示特征日的指数变化情况。可以看出明显的特征日的特征。此处只列举了周特征日变化情况。</textarea>
+					{% line_chart tp with id='tp' 
+        		       library={"title":{"text":"Traffic Pattern"}}%}
 				</div>
 			</div>
 		</div>
